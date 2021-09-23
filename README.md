@@ -143,6 +143,7 @@ docker container ls [--all] #Show running containers, all with --all flag
 #docker container ls -all
 #CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
 #8935300e8924        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       frosty_elion
+#Запускает -it в интерактивном режиме, -d  в detached режиме, в случае интерактивного режима конейнер останавливается, когда перестает жить консоль
 docker container run --name demo -it alpine
 /# cat /etc/os-release
 #/ # cat /etc/os-release

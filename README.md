@@ -106,41 +106,64 @@ Hands-on practice quest #00: prerequisites sound-check (15+5)
 ``` 
 
 - [ ] When участники *именуют сценарии*, выполняют команды и анализируют их вывод и поведение
-- Сценарий "Как ...?"
+- Сценарий "Как узнать версию докера и его компонент,вывести занятое место на диске образами и контейнерами, смотреть за системными событиями докера?"
 ```shell
-docker version # TODO: собственные пометки участников для будущего использования в проектах
-docker system info
-docker system df
-
-docker events
+docker version # Версия докера и его компонент
+#docker system --help
+docker system info #Display system-wide information
+docker system df #Show docker disk usage
+#docker system df
+#TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+#Images              7                   4                   XXGB             XXXGB (91%)
+#Containers          9                   0                   126B                126B (100%)
+#Local Volumes       1                   0                   0B                  0B
+#Build Cache         0                   0                   0B                  0B
+docker events #Get real time events from the server
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как сделать повторный логин?"
 (в новом ssh shell, чтобы параллельно видеть вывод `docker events`)
 ```shell
 docker logout
 open https://hub.docker.com/settings/security # to make Access Token
 docker login -u {{ registry-account }} -p {{ access-token }} # login default hub.docker.com registry
-```
+docker login -username {{ registry-account }} -password {{ access-token }} # login default hub.docker.com registry```
 
-- Сценарий "Как ...?"
+- Сценарий "Как узнать, сколько места занимают образы и контейнеры (предварительно скачав образ alpine)?"
 ```shell
 docker image pull alpine
 docker system df
 ````
 
-- Сценарий "Как ...?"
+- Сценарий "Как выполнить комманду в новосозданном контейнере, выйти из него, остановив"
 ```shell
-docker container ls [--all]
+docker container ls [--all] #Show running containers, all with --all flag
+
+#docker container ls -all
+#CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+#8935300e8924        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       frosty_elion
 docker container run --name demo -it alpine
 /# cat /etc/os-release
+#/ # cat /etc/os-release
+#NAME="Alpine Linux"
+#ID=alpine
+#VERSION_ID=3.14.2
+#PRETTY_NAME="Alpine Linux v3.14"
+#HOME_URL="https://alpinelinux.org/"
+#BUG_REPORT_URL="https://bugs.alpinelinux.org/"#
+#
+
 /# exit 
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как посмотреть список всех запущенных контейнеров (всех созданных) и как удалить контейнер с названием demo (даже если он запущен)?"
 ```shell
 docker container ls [--all]
 docker container rm [--force] demo
+#docker container rm demo2
+#Error response from daemon: You cannot remove a running container a1abe630b1590c55219508888e17f283fd1f520c7a9643c5b51566af2787fc8d. Stop the container before #attempting removal or force remove
+(base) $ docker container rm --force demo2
+demo2
 ```
 
 - [ ] Then участники делятся проблемами и отвечают на вопросы

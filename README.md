@@ -121,13 +121,14 @@ docker system df #Show docker disk usage
 docker events #Get real time events from the server
 ```
 
-- Сценарий "Как сделать повторный логин?"
+- Сценарий "Как сделать повторный логин, чтобы скачать образ?"
 (в новом ssh shell, чтобы параллельно видеть вывод `docker events`)
 ```shell
 docker logout
 open https://hub.docker.com/settings/security # to make Access Token
 docker login -u {{ registry-account }} -p {{ access-token }} # login default hub.docker.com registry
 docker login -username {{ registry-account }} -password {{ access-token }} # login default hub.docker.com registry```
+```
 
 - Сценарий "Как узнать, сколько места занимают образы и контейнеры (предварительно скачав образ alpine)?"
 ```shell

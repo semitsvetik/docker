@@ -136,7 +136,7 @@ docker image pull alpine
 docker system df
 ````
 
-- Сценарий "Как выполнить комманду в новосозданном контейнере, выйти из него, остановив"
+- Сценарий "Как выполнить комманду в новосозданном контейнере в интерактивном режиме, выйти из него, остановив"
 ```shell
 docker container ls [--all] #Show running containers, all with --all flag
 
